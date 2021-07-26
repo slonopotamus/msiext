@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "Process.h"
-#include <boost/shared_ptr.hpp>
 
 using namespace AppSecInc::LSA;
 
@@ -29,7 +28,7 @@ void Process::Open(const std::wstring& name, DWORD access, BOOL inherit)
     CHECK_WIN32_BOOL(snapshot_h != NULL,
         L"CreateToolhelp32Snapshot failed");
 
-    boost::shared_ptr<void> snapshot_h_ptr(snapshot_h, ::CloseHandle);
+    std::shared_ptr<void> snapshot_h_ptr(snapshot_h, ::CloseHandle);
 
     PROCESSENTRY32 pe32 = { 0 };
     pe32.dwSize = sizeof(pe32);

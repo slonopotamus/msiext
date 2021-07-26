@@ -83,10 +83,10 @@ CommandSet* CommandSet::getForFlavour(const std::wstring& flavour)
 	throw std::logic_error("Unsupported flavour");
 }
 
-typedef boost::shared_ptr<CommandSet> CommandSetPtr;
-typedef std::pair<std::vector<const std::wstring>,CommandSetPtr> DelimsCsPair;
+typedef std::shared_ptr<CommandSet> CommandSetPtr;
+typedef std::pair<std::vector<std::wstring>,CommandSetPtr> DelimsCsPair;
 
-CommandSet* CommandSet::getForDelimiters(const std::vector<const std::wstring>& delimiters)
+CommandSet* CommandSet::getForDelimiters(const std::vector<std::wstring>& delimiters)
 {
 	static std::vector<DelimsCsPair> csets;
 	

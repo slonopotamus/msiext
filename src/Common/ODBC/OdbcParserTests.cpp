@@ -28,11 +28,11 @@ void OdbcParserUnitTests::testCommandSetSqlServer()
 
 void OdbcParserUnitTests::testCommandSetDelimiters()
 {
-	std::vector<const std::wstring> delims;
+	std::vector<std::wstring> delims;
 	delims.push_back(L"go");
 	CommandSet* cs  = CommandSet::getForDelimiters(delims);
 	
-	std::vector<const std::wstring> delims1;
+	std::vector<std::wstring> delims1;
 	delims1.push_back(L"go");
 	CommandSet* cs1 = CommandSet::getForDelimiters(delims1);
 
@@ -57,7 +57,7 @@ void OdbcParserUnitTests::testCommandSetFindCommand()
 
 void OdbcParserUnitTests::testCommandSetFindCommandForDelimiters()
 {
-	std::vector<const std::wstring> delims;
+	std::vector<std::wstring> delims;
 	delims.push_back(L"Go");
 	CommandSet* cs  = CommandSet::getForDelimiters(delims);
 	CPPUNIT_ASSERT( 0 != cs->findCommand(L"GO") );

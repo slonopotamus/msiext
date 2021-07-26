@@ -4,4 +4,3 @@
 #include <CppUnitTests/CppUnitTests.h>
 #include <String/String.h>
 #include <AtlCom/ComUtils.h>
-#include <boost/shared_ptr.hpp>

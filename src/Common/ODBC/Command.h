@@ -1,7 +1,5 @@
 #pragma once
 
-#include <boost/shared_ptr.hpp>
-
 namespace AppSecInc 
 {
 	namespace Databases 
@@ -26,7 +24,7 @@ namespace AppSecInc
 				bool batchTerminator;
 			};
 
-			typedef boost::shared_ptr<Command> CommandPtr;
+			typedef std::shared_ptr<Command> CommandPtr;
 
 			// class that provides generic insert command processing
 			class InsertCommand: public Command {

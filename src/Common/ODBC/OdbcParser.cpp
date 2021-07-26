@@ -18,7 +18,7 @@ void OdbcParser::setSqlFlavour(const std::wstring& sqlFlavour)
 	pimpl->setSqlFlavour(sqlFlavour);
 }
 
-void OdbcParser::setDelimiters(const std::vector<const std::wstring>& delimiters)
+void OdbcParser::setDelimiters(const std::vector<std::wstring>& delimiters)
 {
 	pimpl->setDelimiters(delimiters);
 }
@@ -33,7 +33,7 @@ void OdbcParser::setSqlTypeOrDelimiter(
 	}
 	else if (! delimiter.empty()) 
 	{
-		std::vector<const std::wstring> delims;
+		std::vector<std::wstring> delims;
 		delims.push_back(delimiter);
 		pimpl->setDelimiters(delims);
 	}

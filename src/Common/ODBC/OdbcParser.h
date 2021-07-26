@@ -46,7 +46,7 @@ namespace AppSecInc
 				                      'sqlcmd', 'oracle',sqlplus', 'sql*plus'.*/
 				void setSqlFlavour(const std::wstring& sqlFlavour);
 				//! set arbitrary delimiters (insert commands not supported)
-				void setDelimiters(const std::vector<const std::wstring>& delimiters);
+				void setDelimiters(const std::vector<std::wstring>& delimiters);
 				//! convenience method that sets either sql flavour or delimiter - whichever not empty.
 				void setSqlTypeOrDelimiter(const std::wstring& type, const std::wstring& delimiter);
 				//! set path resolver (default - file system path resolver)

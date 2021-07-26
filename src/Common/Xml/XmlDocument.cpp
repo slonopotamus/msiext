@@ -263,7 +263,7 @@ std::wstring XmlDocument::GetAttributeValue(const std::wstring& xpath, const std
 std::wstring XmlDocument::XslTransform(const std::wstring xslt_filename)
 {
     XmlDocument xslt;
-    xslt.Load(xslt_filename, MSXML2::CLSID_FreeThreadedDOMDocument);
+    xslt.Load(xslt_filename, MSXML2::CLSID_FreeThreadedDOMDocument60);
 
 	CComBSTR bstrOut;
 

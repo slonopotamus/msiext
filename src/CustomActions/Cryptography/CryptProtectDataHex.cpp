@@ -27,7 +27,7 @@ CA_API UINT __stdcall CryptProtectDataHex(MSIHANDLE hInstall)
 
 	// Encrypt the data
 	DATA_BLOB blobOut = { 0 };
-    boost::shared_ptr<void> blobOutPtr(blobOut.pbData, ::LocalFree);
+    std::shared_ptr<void> blobOutPtr(blobOut.pbData, ::LocalFree);
 
     CHECK_WIN32_BOOL(::CryptProtectData( & blobIn,
         description.c_str(), // Windows 2000 requires a description (bug 13227)
@@ -84,9 +84,9 @@ CA_API UINT __stdcall CryptUnprotectDataHex(MSIHANDLE hInstall)
 
     // Decrypt the data
 	DATA_BLOB blobOut = { 0 };
-    boost::shared_ptr<void> blobOutPtr(blobOut.pbData, ::LocalFree);
+    std::shared_ptr<void> blobOutPtr(blobOut.pbData, ::LocalFree);
     LPWSTR descriptionOut = NULL;
-    boost::shared_ptr<void> descriptionOutPtr(descriptionOut, ::LocalFree);
+    std::shared_ptr<void> descriptionOutPtr(descriptionOut, ::LocalFree);
     CHECK_WIN32_BOOL(::CryptUnprotectData( & blobIn,
         & descriptionOut,
 		& blobEntropy,

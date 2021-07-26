@@ -6,7 +6,7 @@ CA_API UINT __stdcall LocalGroupMembers_Immediate(MSIHANDLE hInstall)
 	MSI_EXCEPTION_HANDLER_PROLOG;
     MsiInstall msiInstall(hInstall);
 
-    typedef enum LocalGroupMemberAttributes
+    enum LocalGroupMemberAttributes
     {
         AddOnInstall = 1,
         AddOnUnInstall = 2,

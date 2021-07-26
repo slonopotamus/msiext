@@ -18,7 +18,6 @@
 #include <File/Version.h>
 #include <Service/Service.h>
 #include <aclapi.h>
-#include <boost/smart_ptr.hpp>
 #include <TcpIp/NetBIOS.h>
 
 using namespace AppSecInc::Msi;

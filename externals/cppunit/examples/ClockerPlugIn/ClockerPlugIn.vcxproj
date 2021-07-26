@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug NtTimer|Win32">
       <Configuration>Debug NtTimer</Configuration>
@@ -16,6 +16,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DC2818FA-4B7B-4EE7-8E2B-31AA488B3EB5}</ProjectGuid>
+    <PlatformToolset>v142</PlatformToolset>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug NtTimer|Win32'" Label="Configuration">

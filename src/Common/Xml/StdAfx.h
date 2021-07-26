@@ -1,7 +1,7 @@
 #pragma once
 #include <Global.h>
 
-#import <msxml4.dll> named_guids
+#import <msxml6.dll> named_guids
 
 #include <String/String.h>
 #include <shlobj.h>

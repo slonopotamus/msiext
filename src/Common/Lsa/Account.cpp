@@ -172,7 +172,7 @@ void Account::Delete(const std::wstring& username, const std::wstring& servernam
 bool Account::Exists(const std::wstring& username, const std::wstring& servername)
 {
     USER_INFO_1 * pui = NULL;
-    boost::shared_ptr<void> puiPtr(pui, ::LocalFree);
+    std::shared_ptr<void> puiPtr(pui, ::LocalFree);
     DWORD rc = ::NetUserGetInfo(servername.empty() ? NULL : servername.c_str(), username.c_str(), 1, reinterpret_cast<LPBYTE *>(& pui));
 
     switch(rc)

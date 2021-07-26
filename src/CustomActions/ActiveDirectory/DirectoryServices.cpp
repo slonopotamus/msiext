@@ -16,7 +16,7 @@ CA_API UINT __stdcall DirectoryGetDcName(MSIHANDLE hInstall)
 	ULONG ulFlags = GetPropertyValue(msiInstall, L"DS_FLAGS", s_DirectoryServicesGetDcNameFlags);
 
 	PDOMAIN_CONTROLLER_INFO pDcInfo = NULL;
-	boost::shared_ptr<void> pDcInfoPtr(pDcInfo, ::NetApiBufferFree);
+	std::shared_ptr<void> pDcInfoPtr(pDcInfo, ::NetApiBufferFree);
 
     CHECK_WIN32_DWORD(::DsGetDcName(
 		    computername.empty() ? NULL : computername.c_str(),

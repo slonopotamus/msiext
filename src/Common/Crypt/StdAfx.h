@@ -3,7 +3,6 @@
 #include <Exception/Exception.h>
 #include <String/StringUtils.h>
 #include <LSA/LSA.h>
-#include <boost/shared_ptr.hpp>
 
 #include "Crypt.h"
 

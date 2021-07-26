@@ -21,7 +21,7 @@ std::wstring DPAPIImpl::Protect(const std::wstring& input, const std::wstring& e
 
 	// Encrypt the data
 	DATA_BLOB blobOut = { 0 };
-    boost::shared_ptr<void> blobOutPtr(blobOut.pbData, ::LocalFree);
+    std::shared_ptr<void> blobOutPtr(blobOut.pbData, ::LocalFree);
 	CHECK_WIN32_BOOL(CryptProtectData(
         & blobIn,
 		L"", // Windows 2000 requires a description (bug 13227)
@@ -51,7 +51,7 @@ std::string DPAPIImpl::Protect(const std::string& input, const std::string& entr
 
 	// Encrypt the data
 	DATA_BLOB blobOut = { 0 };
-    boost::shared_ptr<void> blobOutPtr(blobOut.pbData, ::LocalFree);
+    std::shared_ptr<void> blobOutPtr(blobOut.pbData, ::LocalFree);
 	CHECK_WIN32_BOOL(CryptProtectData(
         & blobIn,
 		L"", // Windows 2000 requires a description (bug 13227)
@@ -82,7 +82,7 @@ std::wstring DPAPIImpl::UnProtect(const std::wstring& input, const std::wstring&
 
     // Decrypt the data
 	DATA_BLOB blobVerify = { 0 };
-    boost::shared_ptr<void> blobVerifyPtr(blobVerify.pbData, ::LocalFree);
+    std::shared_ptr<void> blobVerifyPtr(blobVerify.pbData, ::LocalFree);
 	CHECK_WIN32_BOOL(CryptUnprotectData(& blobIn, NULL, & blobEntropy, NULL, NULL, CRYPTPROTECT_UI_FORBIDDEN, & blobVerify),
         L"CryptUnprotectData failed");
 
@@ -108,7 +108,7 @@ std::string DPAPIImpl::UnProtect(const std::string& input, const std::string& en
 
     // Decrypt the data
 	DATA_BLOB blobVerify = { 0 };
-    boost::shared_ptr<void> blobVerifyPtr(blobVerify.pbData, ::LocalFree);
+    std::shared_ptr<void> blobVerifyPtr(blobVerify.pbData, ::LocalFree);
 	CHECK_WIN32_BOOL(CryptUnprotectData(& blobIn, NULL, & blobEntropy, NULL, NULL, CRYPTPROTECT_UI_FORBIDDEN, & blobVerify),
         L"CryptUnprotectData failed");
 

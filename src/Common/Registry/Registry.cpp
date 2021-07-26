@@ -5,7 +5,7 @@ bool AppSecInc::Registry::KeyExists(HKEY root, const std::wstring& key, const st
 {
     HKEY reg = NULL;
     DWORD dwErr = ::RegOpenKey(root, key.c_str(), & reg);
-    boost::shared_ptr<void> reg_ptr(reg, ::CloseHandle);
+    std::shared_ptr<void> reg_ptr(reg, ::CloseHandle);
 
     bool result = true;
     switch(dwErr)
@@ -51,7 +51,7 @@ std::wstring AppSecInc::Registry::GetStringValue(HKEY root, const std::wstring& 
     CHECK_WIN32_DWORD(::RegOpenKey(root, key.c_str(), & reg), 
         L"Error opening " << key);
 
-    boost::shared_ptr<void> reg_ptr(reg, ::CloseHandle);
+    std::shared_ptr<void> reg_ptr(reg, ::CloseHandle);
 
     DWORD dwSize = 0;
     DWORD dwType = 0;
@@ -89,7 +89,7 @@ void AppSecInc::Registry::CopyBranch(HKEY sourceRoot, const std::wstring& keySrc
 	CHECK_WIN32_DWORD(::RegOpenKeyEx(sourceRoot, keySrcRoot.c_str(), 0, KEY_READ, & hkeySrcRoot),
 		L"Error opening " << keySrcRoot);
 
-    boost::shared_ptr<void> hkeySrcRoot_ptr(hkeySrcRoot, ::RegCloseKey);
+    std::shared_ptr<void> hkeySrcRoot_ptr(hkeySrcRoot, ::RegCloseKey);
 
 	// Get information, so that we know how much memory to allocate
 	CHECK_WIN32_DWORD(::RegQueryInfoKey(hkeySrcRoot, NULL, NULL, NULL, & subkeys, NULL, NULL, & values, NULL, & maxdata, NULL, NULL),
@@ -103,7 +103,7 @@ void AppSecInc::Registry::CopyBranch(HKEY sourceRoot, const std::wstring& keySrc
 	CHECK_WIN32_DWORD(::RegCreateKeyEx(targetRoot, keyDestRoot.c_str(), 0, NULL, REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, & hkeyDestRoot, NULL),
 	L"Error creating " << keyDestRoot);
 
-	boost::shared_ptr<void> hkeyDestRoot_ptr(hkeyDestRoot, ::RegCloseKey);
+	std::shared_ptr<void> hkeyDestRoot_ptr(hkeyDestRoot, ::RegCloseKey);
 
 	for (index = 0; index < values; index++)
 	{
@@ -137,7 +137,7 @@ void AppSecInc::Registry::DeleteBranch(HKEY root, const std::wstring& key)
 		CHECK_WIN32_DWORD(::RegOpenKeyEx(root, key.c_str(), 0, KEY_READ, & reg), 
 			L"Error opening " << key);
 
-        boost::shared_ptr<void> reg_ptr(reg, ::RegCloseKey); 
+        std::shared_ptr<void> reg_ptr(reg, ::RegCloseKey); 
 
 		// Get information, so that we know how much memory to allocate
 		CHECK_WIN32_DWORD(::RegQueryInfoKey(reg, NULL, NULL, NULL, & subkeys, & maxkeyname, NULL, NULL, NULL, NULL, NULL, NULL), 
@@ -164,7 +164,7 @@ void AppSecInc::Registry::CreateKey(HKEY root, const std::wstring& srckey)
 	CHECK_WIN32_DWORD(::RegCreateKeyEx(root, srckey.c_str(), 0, NULL, REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, & hkeySrcRoot, NULL),
 		L"Error creating " << srckey);
 
-    boost::shared_ptr<void> hkeySrcRoot_ptr(hkeySrcRoot, ::RegCloseKey);
+    std::shared_ptr<void> hkeySrcRoot_ptr(hkeySrcRoot, ::RegCloseKey);
 }
 
 
@@ -175,7 +175,7 @@ void AppSecInc::Registry::SetStringValue(HKEY root, const std::wstring& srckey, 
 	CHECK_WIN32_DWORD(::RegCreateKeyEx(root, srckey.c_str(), 0, NULL, REG_OPTION_NON_VOLATILE, KEY_SET_VALUE, NULL, & hkeySrcRoot, NULL),
 		L"Error creating " << srckey);
 
-    boost::shared_ptr<void> hkeySrcRoot_ptr(hkeySrcRoot, ::RegCloseKey);
+    std::shared_ptr<void> hkeySrcRoot_ptr(hkeySrcRoot, ::RegCloseKey);
 
 	CHECK_WIN32_DWORD(::RegSetValueEx(hkeySrcRoot, name.c_str(), 0L, REG_SZ, reinterpret_cast<const byte *>(value.c_str()), (value.length() + 1) * sizeof(WCHAR)),
 		L"Error creating " << srckey << "\\" << name);

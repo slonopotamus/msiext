@@ -220,7 +220,7 @@ std::list<std::wstring> AppSecInc::File::GetDirectoryFiles(const std::wstring& p
     
     if (h != INVALID_HANDLE_VALUE)
     {
-		boost::shared_ptr<void> hFind(h, ::FindClose);
+		std::shared_ptr<void> hFind(h, ::FindClose);
 
         do
         {
@@ -263,7 +263,7 @@ std::list<std::wstring> AppSecInc::File::GetFiles(const std::wstring& path, cons
 
     if (h != INVALID_HANDLE_VALUE)
     {
-		boost::shared_ptr<void> hFind(h, ::FindClose);
+		std::shared_ptr<void> hFind(h, ::FindClose);
 
 		do
         {
@@ -375,7 +375,7 @@ void AppSecInc::File::ReadToEnd(const std::wstring& filename, std::vector<char>&
         CHECK_WIN32_BOOL(hFile != INVALID_HANDLE_VALUE,
             L"Error opening " << filename);
 
-        boost::shared_ptr<void> file_ptr(hFile, ::CloseHandle);
+        std::shared_ptr<void> file_ptr(hFile, ::CloseHandle);
         data.resize(size);
 
         DWORD dwRead = 0;
@@ -425,7 +425,7 @@ void AppSecInc::File::FileWrite(
     CHECK_WIN32_BOOL(hFile != INVALID_HANDLE_VALUE,
         L"Error opening " << filename);
 
-    boost::shared_ptr<void> file_ptr(hFile, ::CloseHandle);
+    std::shared_ptr<void> file_ptr(hFile, ::CloseHandle);
 
     if (data.size() > 0) // empty files are ok
     {
@@ -507,7 +507,7 @@ bool AppSecInc::File::DirectoryDelete(const std::wstring& path, int flags)
     
     if (h != INVALID_HANDLE_VALUE)
     {
-		boost::shared_ptr<void> hFind(h, ::FindClose);
+		std::shared_ptr<void> hFind(h, ::FindClose);
 		directory_exists = true;
 
 		do

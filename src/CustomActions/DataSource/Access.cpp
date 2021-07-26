@@ -19,7 +19,7 @@ CA_API UINT __stdcall ConfigDataSource_Access(MSIHANDLE hInstall)
     return ERROR_SUCCESS;
 }
 
-typedef enum AccessDatabaseAttributes
+enum AccessDatabaseAttributes
 {
     CreateOnInstall = 1,
     DropOnUnInstall = 2,

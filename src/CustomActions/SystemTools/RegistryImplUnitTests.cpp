@@ -1,6 +1,5 @@
 #include "StdAfxUnitTests.h"
 #include "RegistryImplUnitTests.h"
-#include <boost/smart_ptr.hpp>
 
 CPPUNIT_TEST_SUITE_REGISTRATION(AppSecInc::UnitTests::Registry::RegistryImplUnitTests);
 
@@ -68,7 +67,7 @@ void RegistryImplUnitTests::Test_Registry_CopyDeleteBranch()
 	CPPUNIT_ASSERT(ERROR_SUCCESS == hInstall.ExecuteCA(L"SystemTools.dll", L"Registry_DeleteBranch"));
 
 	HKEY reg = NULL;
-    boost::shared_ptr<void> reg_ptr(reg, ::RegCloseKey);
+    std::shared_ptr<void> reg_ptr(reg, ::RegCloseKey);
 	CPPUNIT_ASSERT(ERROR_FILE_NOT_FOUND == RegOpenKeyEx(HKEY_LOCAL_MACHINE, basepath.c_str(), 0, KEY_READ, & reg));
 
 }
@@ -92,14 +91,14 @@ void RegistryImplUnitTests::Test_Registry_MoveBranch()
 	{
 		// the source doesn't exist any more
 		HKEY reg = NULL;
-		boost::shared_ptr<void> reg_ptr(reg, ::RegCloseKey);
+		std::shared_ptr<void> reg_ptr(reg, ::RegCloseKey);
 		CPPUNIT_ASSERT(ERROR_FILE_NOT_FOUND == RegOpenKeyEx(HKEY_LOCAL_MACHINE, L"SOFTWARE\\RegistryUnitTests", 0, KEY_READ, & reg));
 	}
 
 	{
 		// the target exists
 		HKEY reg = NULL;
-		boost::shared_ptr<void> reg_ptr(reg, ::RegCloseKey);
+		std::shared_ptr<void> reg_ptr(reg, ::RegCloseKey);
 		CPPUNIT_ASSERT(ERROR_SUCCESS == RegOpenKeyEx(HKEY_LOCAL_MACHINE, L"SOFTWARE\\MovedRegistryUnitTests", 0, KEY_READ, & reg));
 	}
 
@@ -122,7 +121,7 @@ void RegistryImplUnitTests::Test_Registry_CreateKey()
 	{
 		// check key if exists
 		HKEY reg = NULL;
-		boost::shared_ptr<void> reg_ptr(reg, ::RegCloseKey);
+		std::shared_ptr<void> reg_ptr(reg, ::RegCloseKey);
 		CPPUNIT_ASSERT(ERROR_SUCCESS == RegOpenKeyEx(HKEY_LOCAL_MACHINE, path.c_str(), 0, KEY_READ, & reg));
 	}
 
@@ -149,7 +148,7 @@ void RegistryImplUnitTests::Test_Registry_SetStringValue()
 	{
 		// check if key exists
 		HKEY reg = NULL;
-		boost::shared_ptr<void> reg_ptr(reg, ::RegCloseKey);
+		std::shared_ptr<void> reg_ptr(reg, ::RegCloseKey);
 		CPPUNIT_ASSERT(ERROR_SUCCESS == RegOpenKeyEx(HKEY_LOCAL_MACHINE, path.c_str(), 0, KEY_READ, & reg));
 	}
 

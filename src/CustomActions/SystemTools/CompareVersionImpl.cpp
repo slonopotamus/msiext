@@ -7,7 +7,7 @@ CA_API UINT __stdcall CompareVersions(MSIHANDLE hInstall)
 	MsiInstall msiInstall(hInstall);
     std::wstring xml = msiInstall.GetViewData(L"SELECT * FROM `CompareVersions`");
 	MSXML2::IXMLDOMDocumentPtr spXMLDOM;
-    CHECK_HR(spXMLDOM.CreateInstance(MSXML2::CLSID_DOMDocument), L"Error creating xml document");
+    CHECK_HR(spXMLDOM.CreateInstance(MSXML2::CLSID_DOMDocument60), L"Error creating xml document");
     CHECK_BOOL(VARIANT_TRUE == spXMLDOM->loadXML(xml.c_str()), L"Invalid xml data");
 
     MSXML2::IXMLDOMNodeListPtr rows = spXMLDOM->selectNodes(L"//Row");

@@ -27,7 +27,7 @@ void LocalGroup::Delete(const std::wstring& name, const std::wstring& servername
 bool LocalGroup::Exists(const std::wstring& name, const std::wstring& servername)
 {
     GROUP_INFO_0 * gui = NULL;
-    boost::shared_ptr<void> guiPtr(gui, ::LocalFree);
+    std::shared_ptr<void> guiPtr(gui, ::LocalFree);
     DWORD rc = ::NetLocalGroupGetInfo(servername.empty() ? NULL : servername.c_str(), name.c_str(), 0, reinterpret_cast<LPBYTE *>(& gui));
 
     switch(rc)
@@ -93,7 +93,7 @@ std::vector<Account> LocalGroup::GetMembers(const std::wstring& groupname, const
         2, reinterpret_cast<LPBYTE *>(& buffer), MAX_PREFERRED_LENGTH, & entriesread, & totalentries, NULL),
         L"Error enumerating members of \"" << (servername.empty() ? L"." : servername) << L"\\" << groupname << L"\"");
 
-    boost::shared_ptr<void> buffer_h(buffer, ::LocalFree);
+    std::shared_ptr<void> buffer_h(buffer, ::LocalFree);
 
     for (DWORD i = 0; i < entriesread; i++)
     {

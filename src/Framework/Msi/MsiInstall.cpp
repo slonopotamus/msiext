@@ -205,7 +205,7 @@ std::wstring MsiInstall::GetViewData(const std::wstring& query)
 {
     // xml document
     MSXML2::IXMLDOMDocumentPtr spXMLDOM;
-    CHECK_HR(spXMLDOM.CreateInstance(MSXML2::CLSID_DOMDocument), 
+    CHECK_HR(spXMLDOM.CreateInstance(MSXML2::CLSID_DOMDocument60), 
 		L"Error creating output document");
     // processing instruction
     MSXML2::IXMLDOMProcessingInstructionPtr spXMLPI = spXMLDOM->createProcessingInstruction(

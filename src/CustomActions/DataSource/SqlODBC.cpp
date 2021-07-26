@@ -281,7 +281,7 @@ CA_API UINT __stdcall Execute_ODBC_Immediate(MSIHANDLE hInstall)
     MSI_EXCEPTION_HANDLER_PROLOG;
     MsiInstall msiInstall(hInstall);
 
-    typedef enum ODBCExecuteAttributes
+    enum ODBCExecuteAttributes
     {
         ExecuteOnInstall = 1,
         ExecuteOnUnInstall = 2,
@@ -423,7 +423,7 @@ CA_API UINT __stdcall DataSource_ODBC_Immediate(MSIHANDLE hInstall)
     MSI_EXCEPTION_HANDLER_PROLOG;
     MsiInstall msiInstall(hInstall);
 
-    typedef enum ODBCDataSourceAttributes
+    enum ODBCDataSourceAttributes
     {
         CreateOnInstall = 1,
         DeleteOnInstall = 2,

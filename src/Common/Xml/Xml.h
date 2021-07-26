@@ -1,5 +1,5 @@
 #pragma once
 
-#import <msxml4.dll> named_guids
+#import <msxml6.dll> named_guids
 
 #include "XmlDocument.h"

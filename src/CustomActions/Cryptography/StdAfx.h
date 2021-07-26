@@ -4,7 +4,6 @@
 #include <Exception/Exception.h>
 #include <AtlCom/CoInitialize.h>
 #include <Msi/Msi.h>
-#include <boost/shared_ptr.hpp>
 
 #include <Crypt/Crypt.h>
 

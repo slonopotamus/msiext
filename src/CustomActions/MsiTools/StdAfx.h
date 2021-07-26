@@ -7,7 +7,6 @@
 #include <Msi/Msi.h>
 #include <shlobj.h>
 #include <File/File.h>
-#include <boost/shared_ptr.hpp>
 #include <LSA/LSA.h>
 using namespace AppSecInc::Msi;
 

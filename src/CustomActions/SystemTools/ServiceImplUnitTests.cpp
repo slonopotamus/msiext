@@ -1,6 +1,5 @@
 #include "StdAfxUnitTests.h"
 #include "ServiceImplUnitTests.h"
-#include <boost/smart_ptr.hpp>
 
 CPPUNIT_TEST_SUITE_REGISTRATION(AppSecInc::UnitTests::Service::ServiceImplUnitTests);
 

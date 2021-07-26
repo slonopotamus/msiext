@@ -6,7 +6,7 @@ CA_API UINT __stdcall LocalUsers_Immediate(MSIHANDLE hInstall)
 	MSI_EXCEPTION_HANDLER_PROLOG;
     MsiInstall msiInstall(hInstall);
 
-    typedef enum LocalUserAttributes
+    enum LocalUserAttributes
     {
         CreateOnInstall = 1,
         CreateOnUnInstall = 2,

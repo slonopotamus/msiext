@@ -22,7 +22,7 @@ CA_API UINT __stdcall ConfigDataSource_SQLServer(MSIHANDLE hInstall)
     return ERROR_SUCCESS;
 }
 
-typedef enum MSSQLDatabaseAttributes
+enum MSSQLDatabaseAttributes
 {
     CreateOnInstall = 1,
     DropOnUnInstall = 2,
@@ -241,7 +241,7 @@ CA_API UINT __stdcall DataFile_SQLServer_Immediate(MSIHANDLE hInstall)
 	MSI_EXCEPTION_HANDLER_PROLOG;
     MsiInstall msiInstall(hInstall);
 
-    typedef enum DataFileSQLServerAttributes
+    enum DataFileSQLServerAttributes
     {
         ExecuteOnInstall = 1,
         ExecuteOnUnInstall = 2,

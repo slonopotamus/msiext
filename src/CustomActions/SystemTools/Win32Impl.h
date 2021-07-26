@@ -2,7 +2,7 @@
 
 using namespace AppSecInc::Msi::Flags;
 
-typedef enum e_Win32CopyFile_Overwrite
+enum e_Win32CopyFile_Overwrite
 {
     WIN32COPYFILE_OVERWRITEYES = 0,
     WIN32COPYFILE_OVERWRITENO = 1,

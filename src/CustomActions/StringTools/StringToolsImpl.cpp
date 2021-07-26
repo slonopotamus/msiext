@@ -1,5 +1,5 @@
 #include "StdAfx.h"
-#include <boost/regex.hpp>
+#include <regex>
 
 
 CA_API UINT __stdcall String_Replace(MSIHANDLE hInstall)
@@ -74,10 +74,10 @@ CA_API UINT __stdcall Regex_Match(MSIHANDLE hInstall)
     std::wstring input = msiInstall.GetProperty(L"REGEX_MATCH_INPUT_STRING");
 	std::wstring pattern = msiInstall.GetProperty(L"REGEX_MATCH_EXPRESSION");
 
-	boost::wregex expression(pattern.c_str());
-	boost::wcmatch what;
+	std::wregex expression(pattern.c_str());
+	std::wcmatch what;
 
-	if(boost::regex_match(input.c_str(), what, expression))
+	if(std::regex_match(input.c_str(), what, expression))
 	{
 		msiInstall.SetProperty(L"REGEX_MATCH_RESULT", L"1");
 	}
@@ -99,9 +99,9 @@ CA_API UINT __stdcall Regex_Replace(MSIHANDLE hInstall)
 	std::wstring pattern = msiInstall.GetProperty(L"REGEX_REPLACE_EXPRESSION");
 	std::wstring format = msiInstall.GetProperty(L"REGEX_REPLACE_FORMAT");
 
-	boost::wregex expression(pattern.c_str());
+	std::wregex expression(pattern.c_str());
 
-	msiInstall.SetProperty(L"REGEX_REPLACE_RESULT", boost::regex_replace(input, expression, format));
+	msiInstall.SetProperty(L"REGEX_REPLACE_RESULT", std::regex_replace(input, expression, format));
 
 	MSI_EXCEPTION_HANDLER_EPILOG;
     return ERROR_SUCCESS;

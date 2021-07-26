@@ -9,7 +9,7 @@ using namespace AppSecInc::UnitTests::UserPrivileges;
 void LocalGroupMembersUnitTests::Test_EntryPoints()
 {
 	HMODULE h = ::LoadLibrary(L"UserPrivileges.dll");
-    boost::shared_ptr<void> h_ptr(h, ::FreeLibrary);
+    std::shared_ptr<void> h_ptr(h, ::FreeLibrary);
 	CPPUNIT_ASSERT_MESSAGE("Missing UserPrivileges.dll", h != NULL);
 	CPPUNIT_ASSERT(NULL != GetProcAddress(h, "LocalGroupMembers_Immediate"));
 	CPPUNIT_ASSERT(NULL != GetProcAddress(h, "LocalGroupMembers_Deferred"));

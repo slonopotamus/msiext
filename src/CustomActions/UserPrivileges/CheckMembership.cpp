@@ -16,7 +16,7 @@ CA_API UINT __stdcall CheckMembership(MSIHANDLE hInstall)
 	CHECK_WIN32_BOOL(::ConvertStringSidToSid(stringSid.c_str(), & sid), 
 		L"ConvertStringSidToSid failed. Error converting: " << stringSid);
 
-	boost::shared_ptr<void> sid_ptr(sid, ::FreeSid);
+	std::shared_ptr<void> sid_ptr(sid, ::FreeSid);
 
 	CHECK_WIN32_BOOL(::CheckTokenMembership(NULL, sid, & isMember), 
 		L"CheckTokenMembership failed");

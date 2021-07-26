@@ -13,7 +13,6 @@
 #include <Xml/Xml.h>
 #include <LSA/LSA.h>
 #include <Msi/MsiImpersonatedInstall.h>
-#include <boost/shared_ptr.hpp>
 
 using namespace AppSecInc::Msi;
 

@@ -12,6 +12,8 @@ doc/Doxyfile
 externals/cppunit/lib
 *.ncb
 *.suo
+/.vs/
+/.idea/
 /msi.sdf
 /msi.opensdf
 /ipch

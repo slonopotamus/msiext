@@ -14,11 +14,11 @@ namespace AppSecInc
         public:
             XmlDocument();
             //! create an empty xml document
-            void Create(const CLSID clsid = MSXML2::CLSID_DOMDocument);
+            void Create(const CLSID clsid = MSXML2::CLSID_DOMDocument60);
 	        //! load an xml document
-            void Load(const std::wstring& filename, const CLSID clsid = MSXML2::CLSID_DOMDocument);
+            void Load(const std::wstring& filename, const CLSID clsid = MSXML2::CLSID_DOMDocument60);
 	        //! load an xml buffer
-            void LoadXml(const std::wstring& xml, const CLSID clsid = MSXML2::CLSID_DOMDocument);
+            void LoadXml(const std::wstring& xml, const CLSID clsid = MSXML2::CLSID_DOMDocument60);
 			//! find node, returns NULL if the node doesn't exist
 			MSXML2::IXMLDOMNodePtr FindNode(const std::wstring& xpath, MSXML2::IXMLDOMNode * = NULL) const;
 	        //! has nodes

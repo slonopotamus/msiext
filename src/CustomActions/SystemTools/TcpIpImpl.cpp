@@ -88,8 +88,11 @@ CA_API UINT __stdcall TcpIp_ListAddresses(MSIHANDLE hInstall)
 	std::wstringstream query;
     query << L"SELECT * FROM `" << listtype << "` WHERE `Property`='" << listbox << L"'";
     
+	std::wstringstream err;
+	err << L"MsiDatabaseOpenView query \"" << query.str() << L"\" failed";
+
     CHECK_WIN32_DWORD(MsiDatabaseOpenView(msiDatabase, query.str().c_str(), & msiView),
-		L"MsiDatabaseOpenView query \"" << query << L"\" failed");
+		err.str());
 
     // list Network Adapter Information
 	std::vector<std::wstring> names;

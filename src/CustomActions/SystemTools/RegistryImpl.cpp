@@ -131,7 +131,7 @@ CA_API UINT __stdcall Win32_RegistryCopy_Immediate(MSIHANDLE hInstall)
     AppSecInc::Xml::XmlDocument registry_xml_document;
     registry_xml_document.LoadXml(msiInstall.GetViewData(L"SELECT * FROM `Registry`"));
 
-    typedef enum RegistryCopyAttributes
+    enum RegistryCopyAttributes
     {
         RegistryCopyOnInstall = 1,
         RegistryCopyOnUnInstall = 2,

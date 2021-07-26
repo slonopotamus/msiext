@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "Handle.h"
 #include "Connection.h"
-#include <boost/regex.hpp>
+#include <regex>
 
 using namespace AppSecInc::Databases::ODBC;
 
@@ -72,8 +72,8 @@ std::vector<ODBCDiagnosticsMessage> ODBCHandle::GetDiagMessages(SQLHANDLE handle
 	// [ vendor-identifier ][ ODBC-component-identifier ] component-supplied-text 
 	// For errors and warnings that occur in a data source, the diagnostic message must use this format:
 	// [ vendor-identifier ][ ODBC-component-identifier ][ data-source-identifier ] data-source-supplied-text 
-	boost::wregex diag_message_regex(L"\\s*\\[(.*?)\\]\\s*\\[(.*?)\\]\\s*(\\[(.*?)\\])?\\s*(.*)");
-	boost::wsmatch diag_message_match;
+	std::wregex diag_message_regex(L"\\s*\\[(.*?)\\]\\s*\\[(.*?)\\]\\s*(\\[(.*?)\\])?\\s*(.*)");
+	std::wsmatch diag_message_match;
 
 	std::vector<SQLWCHAR> sql_message;
 	sql_message.resize(SQL_MAX_MESSAGE_LENGTH + 2);
@@ -97,7 +97,7 @@ std::vector<ODBCDiagnosticsMessage> ODBCHandle::GetDiagMessages(SQLHANDLE handle
 
 		ODBCDiagnosticsMessage message;
 		const std::wstring & expression = & * sql_message.begin();
-		boost::regex_match(expression, diag_message_match, diag_message_regex);
+		std::regex_match(expression, diag_message_match, diag_message_regex);
 		CHECK_BOOL(diag_message_match.size() == 6, L"Invalid message format");
 		if (diag_message_match[1].matched)
 		{

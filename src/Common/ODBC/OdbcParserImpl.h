@@ -16,7 +16,7 @@ namespace AppSecInc
 				virtual ~OdbcParserImpl();
 
 				void setPathResolver(PathResolver* resolver);
-				void setDelimiters(const std::vector<const std::wstring>& delimiters);
+				void setDelimiters(const std::vector<std::wstring>& delimiters);
 				void setSqlFlavour(const std::wstring& sqlFlavour);
 				PathResolver* getPathResolver() const;
 				

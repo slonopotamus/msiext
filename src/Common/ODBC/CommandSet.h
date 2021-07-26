@@ -15,7 +15,7 @@ namespace AppSecInc
 				virtual Command* findCommand(const std::wstring& line) const;
 				
 				static CommandSet* getForFlavour(const std::wstring& flavour);
-				static CommandSet* getForDelimiters(const std::vector<const std::wstring>& delimiters);
+				static CommandSet* getForDelimiters(const std::vector<std::wstring>& delimiters);
 			  protected:
 				std::vector<CommandPtr> commands;
 			};

@@ -17,5 +17,4 @@
 #include <Msi/Msi.h>
 #include <MsiShim/MsiShim.h>
 #include <Msi/MsiImpersonatedInstall.h>
-#include <boost/shared_ptr.hpp>
 using namespace AppSecInc::Msi;

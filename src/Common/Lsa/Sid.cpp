@@ -45,7 +45,7 @@ Sid& Sid::operator=(const std::wstring& sid_string)
 void Sid::Set(const std::wstring& sid_string, SID_NAME_USE use)
 {
 	PSID psid = NULL;
-    boost::shared_ptr<void> psidPtr(psid, ::LocalFree);
+    std::shared_ptr<void> psidPtr(psid, ::LocalFree);
 	CHECK_WIN32_BOOL(::ConvertStringSidToSid(sid_string.c_str(), & psid),
 		L"Error in ConvertStringSidToSid");
 	Set(psid, use);
@@ -54,7 +54,7 @@ void Sid::Set(const std::wstring& sid_string, SID_NAME_USE use)
 std::wstring Sid::ToString() const
 {
 	LPWSTR buffer = NULL;
-    boost::shared_ptr<void> bufferPtr(buffer, ::LocalFree);
+    std::shared_ptr<void> bufferPtr(buffer, ::LocalFree);
     CHECK_WIN32_BOOL(::ConvertSidToStringSid(GetPSID(), & buffer),
         L"Error in ConvertSidToStringSid");
 	return buffer;

@@ -7,7 +7,7 @@ std::string AppSecInc::Formatter::FormatMessageFromHRA(HRESULT hr)
 {
     std::string result;
 	LPSTR lpMsgBuf = NULL;
-    boost::shared_ptr<void> lpMsgBufPtr(lpMsgBuf, ::LocalFree);
+    std::shared_ptr<void> lpMsgBufPtr(lpMsgBuf, ::LocalFree);
 	DWORD rc = 0;
 
     rc = ::FormatMessageA(
